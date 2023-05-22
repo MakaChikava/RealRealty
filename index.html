@@ -8,29 +8,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/vue@3"></script>
 </head>
-<body>
-    <div id="content" class="container">
-        <img src="" alt="">
-        <nav class="navbar sticky-top bg-body-tertiary">
+<img src="photo-1477959858617-67f85cf4f1df.jpeg" alt="">
+    <nav class="navbar sticky-top bg-body-tertiary bg-primary">
             <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sticky top</a>
+                <a class="navbar-brand text-light fs-2" href="url">{{ logo }}</a>
             </div>
-        </nav>
-        <h1>Maka</h1>
+    </nav>
+
+    <body>
+        <div id="content" class="container">
+        
+        <form action="">
+        <input type="search">
+        <button>search</button>
+        </form>
+
         <h2>{{ pageTitle }}</h2>
         <p>{{ content }}</p>
-        <p>{{ content }}</p>
-    </div>
-    <Script>
+        
+        </div>
+        <Script>
+            Vue.createApp({
+                data() {
+                    return {
+                        logo: 'Real Realty',
+                        url: 'home.html'
+                    }
+                }
+            }).mount('body')
         Vue.createApp({
             data() {
                 return {
-                    pageTitle: 'Hello, vue',
-                    content: 'welcome to the world of vue'
+                    
                 }
             }
         }).mount('#content');
 
-    </Script>
-</body>
+        </Script>
+    </body>
 </html>
