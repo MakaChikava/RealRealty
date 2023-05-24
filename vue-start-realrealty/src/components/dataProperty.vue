@@ -1,6 +1,11 @@
 <template>
     <div>
         <h1>Property Data</h1>
+        <form>
+            <input type="text">
+            <button>search</button>
+        </form>
+        
     </div>
 
 </template>
