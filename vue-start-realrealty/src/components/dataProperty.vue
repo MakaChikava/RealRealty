@@ -5,7 +5,14 @@
             <input type="text">
             <button>search</button>
         </form>
-        
+        <ul>
+            <li v-for="property in properties" :key="property.id">
+                <img src= {{ property.img }} alt="fgd">
+                <p>{{ property.price }}</p>
+                <p>{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
+                <p>{{  }}</p>
+            </li>
+        </ul>
     </div>
 
 </template>
@@ -14,13 +21,21 @@
 import axios from 'axios';
 
 
+
 export default {
-    setup() {
-    axios
-        .get('http://localhost:8000')
-        .then((res)=>{
-            console.log(res.data )
-        })
+    data() 
+    {
+        return {
+            properties:[],
+        }
+    },
+
+    async mounted() 
+    {
+        let res = await axios.get('http://localhost:8000');
+        console.log(res.data)
+        this.properties = res.data
+
+    },
     }
-}
 </script>
