@@ -7,7 +7,8 @@
         </form>
         <ul>
             <li v-for="property in properties" :key="property.id">
-                <img src= {{ property.img }} alt="fgd">
+                <img src={{ property.img }}>
+                <!-- {{ property.img }} -->
                 <p>{{ property.price }}</p>
                 <p>{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
                 <p>{{  }}</p>
