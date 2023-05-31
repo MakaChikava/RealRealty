@@ -5,15 +5,26 @@
             <input type="text">
             <button>search</button>
         </form>
-        <ul>
-            <li v-for="property in properties" :key="property._id">
-                <img :src="property.img" alt="">
-                <p>{{ property.price }}</p>
-                <p>{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
-            </li>
-        </ul>
-    </div>
 
+        <div class="container text-center">
+            <ul>
+                <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+                <li v-for="property in properties" :key="property._id">
+                <div class="card" style="width: 18rem;">
+                    <img :src="property.img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">{{ property.price }}</p>
+                    <p class="card-text">bedrooms: {{ property.bedrooms }}</p>
+                    <p class="card-text">baths: {{ property.baths }}</p>
+                    <p class="card-text">{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
+                </div>
+                </div>
+                    
+                </li>
+                </div>
+        </ul>
+        </div>
+    </div>
 </template>
 
 <script>
