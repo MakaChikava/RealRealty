@@ -19,7 +19,7 @@
                     <p class="card-text">{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
                 </div>
                 </div>
-                    
+                
                 </li>
                 </div>
         </ul>
