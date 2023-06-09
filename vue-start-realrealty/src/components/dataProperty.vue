@@ -2,12 +2,14 @@
     <div>
         <h1>Create Form</h1>
 <form action="">
+    <input type="text" v-model="property.img" placeholder="img">
+    <input type="text" v-model="property.bedrooms" placeholder="bedrooms">
+    <input type="text" v-model="property.baths" placeholder="baths">
     <input type="text" v-model="property.address" placeholder="address">
     <input type="text" v-model="property.city" placeholder="city">
-    <input type="text" v-model="property.img" placeholder="img">
     <input type="text" v-model="property.state" placeholder="state">
-    <input type="text" v-model="property.type" placeholder="type">
     <input type="text" v-model="property.zip" placeholder="zip">
+    <input type="text" v-model="property.type" placeholder="type">
 </form>
 <button @click="addProperty()"> submit </button>
 
@@ -50,6 +52,8 @@ export default {
             properties:[],
             property: {
                 address: "",
+                bedrooms: "",
+                baths: "",
                 city: "",
                 img: "",
                 price: "",
@@ -62,6 +66,7 @@ export default {
     },
 
     methods:{
+
         refreshData(){
             axios
                 .get('http://localhost:8000')
@@ -69,6 +74,7 @@ export default {
                     this.properties=res.data
                 })
         },
+
         addProperty(){
             axios
                 .post("http://localhost:8000/house", {
@@ -78,9 +84,12 @@ export default {
                     price: this.property.price,
                     state: this.property.state,
                     type: this.property.type,
-                    zip: this.property.zip
+                    zip: this.property.zip,
+                    bedrooms: this.property.bedrooms,
+                    baths: this.property.baths
                 })
                 .then((res)=>{
+                    this.refreshData()
                     if(res.status ==201) {
                         console.log("succesful")
                     }
