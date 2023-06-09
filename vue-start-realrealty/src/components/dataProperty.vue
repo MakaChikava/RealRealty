@@ -30,6 +30,7 @@
                     <p class="card-text">bedrooms: {{ property.bedrooms }}</p>
                     <p class="card-text">baths: {{ property.baths }}</p>
                     <p class="card-text">{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
+                    <button @click="deleteProperty(property._id)">delete</button>
                 </div>
                 </div>
                 
@@ -93,15 +94,21 @@ export default {
                     if(res.status ==201) {
                         console.log("succesful")
                     }
-        })}
+        })},
+        
+        
+        deleteProperty(id){
+            axios
+                .delete(`http://localhost:8000/house/${id}`)
+                .then(()=>{
+                    this.refreshData();
+                })
+        }
     },
 
     mounted:function() 
     {
         this.refreshData();
-        // let res = await axios.get('http://localhost:8000');
-        // console.log(res.data)
-        // this.properties = res.data
 
     },
     }
