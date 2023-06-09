@@ -7,15 +7,12 @@
     <input type="text" v-model="property.state" placeholder="state">
     <input type="text" v-model="property.type" placeholder="type">
     <input type="text" v-model="property.zip" placeholder="zip">
-    <input type="submit">
-    <button @click="{{ addProperty }}"> submit </button>
-
 </form>
+<button @click="addProperty()"> submit </button>
 </template>
 
 <script>
 import axios from 'axios';
-import { response } from 'express';
 
 export default {
     data: function (){
@@ -33,13 +30,16 @@ export default {
         }
     },
     method: {
-        handleChange(){
-        
-        },
-        addProperty (){
+        addProperty(){
             axios
-                .post("http://localhost:8000", {
-                    property: this.property
+                .post("http://localhost:8000/house", {
+                    address: this.property.address,
+                    city: this.property.city,
+                    img: this.property.img,
+                    price: this.property.price,
+                    state: this.property.state,
+                    type: this.property.type,
+                    zip: this.property.zip
                 })
                 .then((res)=>{
                     if(res.status ==201) {
