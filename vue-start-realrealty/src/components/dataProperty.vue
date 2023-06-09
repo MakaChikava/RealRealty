@@ -40,11 +40,22 @@ export default {
         }
     },
 
-    async mounted() 
+    methods:{
+        refreshData(){
+            axios
+                .get('http://localhost:8000')
+                .then((res)=>{
+                    this.properties=res.data
+                })
+        }
+    },
+
+    mounted:function() 
     {
-        let res = await axios.get('http://localhost:8000');
-        console.log(res.data)
-        this.properties = res.data
+        this.refreshData();
+        // let res = await axios.get('http://localhost:8000');
+        // console.log(res.data)
+        // this.properties = res.data
 
     },
     }
