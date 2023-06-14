@@ -12,6 +12,7 @@
     <input type="text" v-model="property.type" placeholder="type">
 </form>
 <button @click="addProperty()"> submit </button>
+<h1>modal test</h1>
 
         <h1>Property Data</h1>
         <form>
@@ -31,6 +32,22 @@
                     <p class="card-text">baths: {{ property.baths }}</p>
                     <p class="card-text">{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
                     <button @click="deleteProperty(property._id)">delete</button>
+
+                    <details>
+                        <summary>Edit</summary>
+                        <form>
+                            <input type="text" v-model="changeProperty.img" placeholder="img">
+                            <input type="text" v-model="changeProperty.bedrooms" placeholder="bedrooms">
+                            <input type="text" v-model="changeProperty.baths" placeholder="baths">
+                            <input type="text" v-model="changeProperty.address" placeholder="address">
+                            <input type="text" v-model="changeProperty.city" placeholder="city">
+                            <input type="text" v-model="changeProperty.state" placeholder="state">
+                            <input type="text" v-model="changeProperty.zip" placeholder="zip">
+                            <input type="text" v-model="changeProperty.type" placeholder="type">
+                        </form>
+                        <button @click="editProperty(property._id)">submit</button>
+                    </details>
+                    
                 </div>
                 </div>
                 
@@ -62,6 +79,17 @@ export default {
                 type: "",
                 zip: ""
 
+            },
+            changeProperty:{
+                address: "",
+                bedrooms: "",
+                baths: "",
+                city: "",
+                img: "",
+                price: "",
+                state: "",
+                type: "",
+                zip: ""
             }
         }
     },
@@ -102,6 +130,24 @@ export default {
                 .delete(`http://localhost:8000/house/${id}`)
                 .then(()=>{
                     this.refreshData();
+                })
+        },
+
+        editProperty(id){
+            axios
+                .put(`http://localhost:8000/house/${id}`, {
+                    address: this.changeProperty.address,
+                    city: this.changeProperty.city,
+                    img: this.changeProperty.img,
+                    price: this.changeProperty.price,
+                    state: this.changeProperty.state,
+                    type: this.changeProperty.type,
+                    zip: this.changeProperty.zip,
+                    bedrooms: this.changeProperty.bedrooms,
+                    baths: this.changeProperty.baths
+                })
+                .then(()=>{
+                    this.refreshData()
                 })
         }
     },
