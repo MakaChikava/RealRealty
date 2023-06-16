@@ -1,6 +1,20 @@
+import "bootstrap/dist/css/bootstrap.css"
 import App from './App.vue'
 import Vue from 'vue';
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faUserSecret)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.config.productionTip = false
+
 new Vue({
-    render: (h) => h(App)
+    render: (h) => h(App),
+    el: '#app',
+components: { App },
+template: '<App/>'
 }).$mount('#app');
+
+import "bootstrap/dist/js/bootstrap.js"
