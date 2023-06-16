@@ -4,12 +4,12 @@
         <div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createmodal">
     <img src="https://cdn3.iconfinder.com/data/icons/font-awesome-regular-1/512/pen-to-square-512.png" class=''>
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="createmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -18,7 +18,7 @@
         </div>
         <div class="modal-body">
 
-        <form action="">
+        <form>
             <input type="text" v-model="property.img" placeholder="img">
             <input type="text" v-model="property.bedrooms" placeholder="bedrooms">
             <input type="text" v-model="property.baths" placeholder="baths">
@@ -60,20 +60,40 @@
                     <p class="card-text">{{ property.address }}, {{ property.city }} {{property.state}}, {{ property.zip }}</p>
                     <button @click="deleteProperty(property._id)">delete</button>
 
-                    <details>
-                        <summary>Edit</summary>
-                        <form>
-                            <input type="text" v-model="changeProperty.img" placeholder="img">
-                            <input type="text" v-model="changeProperty.bedrooms" placeholder="bedrooms">
-                            <input type="text" v-model="changeProperty.baths" placeholder="baths">
-                            <input type="text" v-model="changeProperty.address" placeholder="address">
-                            <input type="text" v-model="changeProperty.city" placeholder="city">
-                            <input type="text" v-model="changeProperty.state" placeholder="state">
-                            <input type="text" v-model="changeProperty.zip" placeholder="zip">
-                            <input type="text" v-model="changeProperty.type" placeholder="type">
-                        </form>
-                        <button @click="editProperty(property._id)">submit</button>
-                    </details>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editprop">
+            Edit
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="editprop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit property</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                                <form>
+                                    <input type="text" v-model="changeProperty.img" placeholder="img">
+                                    <input type="text" v-model="changeProperty.bedrooms" placeholder="bedrooms">
+                                    <input type="text" v-model="changeProperty.baths" placeholder="baths">
+                                    <input type="text" v-model="changeProperty.address" placeholder="address">
+                                    <input type="text" v-model="changeProperty.city" placeholder="city">
+                                    <input type="text" v-model="changeProperty.state" placeholder="state">
+                                    <input type="text" v-model="changeProperty.zip" placeholder="zip">
+                                    <input type="text" v-model="changeProperty.type" placeholder="type">
+                                </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="editProperty(property._id)">Save Changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
                     
                 </div>
                 </div>
@@ -173,7 +193,8 @@ export default {
                     bedrooms: this.changeProperty.bedrooms,
                     baths: this.changeProperty.baths
                 })
-                .then(()=>{
+                .then((res)=>{
+                    console.log(res.data)
                     this.refreshData()
                 })
         }
