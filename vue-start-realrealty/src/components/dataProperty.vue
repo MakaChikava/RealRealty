@@ -1,18 +1,45 @@
 <template>
     <div>
-        <h1>Create Form</h1>
-<form action="">
-    <input type="text" v-model="property.img" placeholder="img">
-    <input type="text" v-model="property.bedrooms" placeholder="bedrooms">
-    <input type="text" v-model="property.baths" placeholder="baths">
-    <input type="text" v-model="property.address" placeholder="address">
-    <input type="text" v-model="property.city" placeholder="city">
-    <input type="text" v-model="property.state" placeholder="state">
-    <input type="text" v-model="property.zip" placeholder="zip">
-    <input type="text" v-model="property.type" placeholder="type">
-</form>
-<button @click="addProperty()"> submit </button>
-<h1>modal test</h1>
+
+        <div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <img src="https://cdn3.iconfinder.com/data/icons/font-awesome-regular-1/512/pen-to-square-512.png" class=''>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Create listing</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        <form action="">
+            <input type="text" v-model="property.img" placeholder="img">
+            <input type="text" v-model="property.bedrooms" placeholder="bedrooms">
+            <input type="text" v-model="property.baths" placeholder="baths">
+            <input type="text" v-model="property.address" placeholder="address">
+            <input type="text" v-model="property.city" placeholder="city">
+            <input type="text" v-model="property.state" placeholder="state">
+            <input type="text" v-model="property.zip" placeholder="zip">
+            <input type="text" v-model="property.type" placeholder="type">
+        </form>
+        <button @click="addProperty()"> submit </button>
+
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="addProperty()">Submit</button>
+        </div>
+    </div>
+    </div>
+</div>
+    
+</div>
 
         <h1>Property Data</h1>
         <form>

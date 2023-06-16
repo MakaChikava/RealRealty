@@ -3,7 +3,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <font-awesome-icon icon="fa-regular fa-pen-to-square" style="color: #1461e6;" />Launch demo modal
+    <img src="https://cdn.icon-icons.com/icons2/2645/PNG/512/pen_square_icon_159935.png" class='w-25'>
 </button>
 
 <!-- Modal -->
